@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND="noninteractive" \
     LANG="en_US.UTF-8" \
     LANGUAGE="en_US.UTF-8"
 
-RUN apt-get update -qq ; apt-get install -y build-essential libpq-dev nodejs postgresql-client mc ; \
+RUN apt-get update -qq ; apt-get install -y build-essential libpq-dev nodejs npm postgresql-client mc ; \
     mkdir /app ; \
     apt-get clean autoclean ; \
     apt-get autoremove --yes ; \
@@ -16,11 +16,11 @@ WORKDIR /app
 
 ADD app/Gemfile* /app/
 
-RUN bundle install ;
+RUN bundle install
 
 ADD app/ /app
 
-EXPOSE 3000
+#RUN bundle exec rake RAILS_ENV=production DATABASE_URL=postgresql://user:pass@127.0.0.1/dbname SECRET_TOKEN=pickasecuretoken assets:precompile
 
 VOLUME ["/app"]
 

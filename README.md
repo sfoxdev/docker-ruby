@@ -1,6 +1,6 @@
 # Ruby
 
-Ruby 2.3.1 + Postgres 9.6.5 + Redis 4.0.1 + Elasticsearch 5.5.2
+Ruby 2.3.1 + Sidekiq + Postgres 9.6.5 + Redis 4.0.1 + Elasticsearch 5.5.2 + Kibana 5.5.2
 
 [![Docker Build Status](https://img.shields.io/docker/build/sfoxdev/ruby.svg?style=flat-square)]()
 [![Docker Build Status](https://img.shields.io/docker/automated/sfoxdev/ruby.svg?style=flat-square)]()
