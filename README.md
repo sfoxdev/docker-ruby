@@ -25,7 +25,7 @@ docker-compose down
 
 2. Inial build
 ```
-docker-compose run -d --build && docker-compose down
+docker-compose up -d --build && docker-compose down
 ```
 3. Create new app
 ```
