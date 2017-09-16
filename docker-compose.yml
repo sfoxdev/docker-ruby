@@ -37,6 +37,10 @@ services:
       - 9300:9300
     volumes:
       - elasticsearch-data:/usr/share/elasticsearch/data
+    environment:
+      - http.host=0.0.0.0
+      - transport.host=0.0.0.0
+      - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
     networks:
       - rubyapp_net
 
