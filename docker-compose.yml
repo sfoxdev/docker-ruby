@@ -15,6 +15,27 @@ services:
     networks:
       - rubyapp_net
 
+  redis:
+    container_name: redis
+    image: redis:4.0.1-alpine
+    restart: always
+#    command: redis-server --requirepass yourpassword
+    ports:
+      - 6379:6379
+    volumes:
+      - redis-data:/data
+
+  elasticsearch:
+    container_name: elasticsearch
+    image: elasticsearch:5.5.2-alpine
+    restart: always
+#    command: elasticsearch -Des.network.host=0.0.0.0
+    ports:
+      - 9200:9200
+      - 9300:9300
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+
   app:
     container_name: app
     build: .
@@ -32,6 +53,8 @@ services:
 
 volumes:
   db-data:
+  redis-data:
+  elasticsearch-data:
 
 networks:
   rubyapp_net:
