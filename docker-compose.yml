@@ -1,0 +1,38 @@
+version: '2'
+
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:9.6.5-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=railsapp
+      - POSTGRES_PASSWORD=railsapp
+    ports:
+      - 5432:5432
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - rubyapp_net
+
+  app:
+    container_name: app
+    build: .
+    image: sfoxdev/ruby
+    restart: always
+#    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    ports:
+      - 3000:3000
+    volumes:
+      - ./app:/app
+    env_file:
+      - .env
+    networks:
+      - rubyapp_net
+
+volumes:
+  db-data:
+
+networks:
+  rubyapp_net:
+    driver: bridge
