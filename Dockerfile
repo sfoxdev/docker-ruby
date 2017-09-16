@@ -1,4 +1,4 @@
-FROM ruby:2.3.1
+FROM ruby:2.3.1-slim
 MAINTAINER SFoxDev <admin@sfoxdev.com>
 
 ENV DEBIAN_FRONTEND="noninteractive" \
